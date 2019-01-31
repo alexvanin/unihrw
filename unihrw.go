@@ -12,7 +12,7 @@ type (
 	Rawer interface{ Raw() []byte }
 )
 
-func NewHrw32Map(slice interface{}, h hash.Hash32) map[int]uint32 {
+func newHrw32Map(slice interface{}, h hash.Hash32) map[int]uint32 {
 	val := reflect.ValueOf(slice)
 	result := make(map[int]uint32, val.Len())
 	for i := 0; i < val.Len(); i++ {
@@ -21,7 +21,7 @@ func NewHrw32Map(slice interface{}, h hash.Hash32) map[int]uint32 {
 	return result
 }
 
-func NewHrw64Map(slice interface{}, h hash.Hash64) map[int]uint64 {
+func newHrw64Map(slice interface{}, h hash.Hash64) map[int]uint64 {
 	val := reflect.ValueOf(slice)
 	result := make(map[int]uint64, val.Len())
 	for i := 0; i < val.Len(); i++ {
@@ -85,7 +85,7 @@ func HrwSort32(slice interface{}, object []byte, h hash.Hash32) error {
 		if _, ok := val.Index(0).Interface().(Rawer); !ok {
 			return errors.New("argument is not slice of rawers")
 		}
-		hrwmap := NewHrw32Map(slice, h)
+		hrwmap := newHrw32Map(slice, h)
 		sort.Slice(slice, func(i, j int) bool {
 			return hrwmap[i] < hrwmap[j]
 		})
@@ -122,7 +122,7 @@ func HrwSort64(slice interface{}, object []byte, h hash.Hash64) error {
 		if _, ok := val.Index(0).Interface().(Rawer); !ok {
 			return errors.New("argument is not slice of rawers")
 		}
-		hrwmap := NewHrw64Map(slice, h)
+		hrwmap := newHrw64Map(slice, h)
 		sort.Slice(slice, func(i, j int) bool {
 			return hrwmap[i] < hrwmap[j]
 		})

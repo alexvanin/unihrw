@@ -33,6 +33,33 @@ of object with implemented `Rawer` interface.
 
 ## Example
 
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/AlexVanin/unihrw"
+	"github.com/spaolacci/murmur3"
+)
+
+func main() {
+	nodes := []string{
+	    "12.43.5.123:2090",
+		"10.15.1.84:8888",
+		"192.168.5.44:4000",
+		"10.17.0.3:2019",
+		"172.0.1.2:44412",
+    }
+
+	hash := murmur3.New32()
+	key1 := []byte("aabbcc")
+	err := unihrw.HrwSort32(nodes, key1, hash)
+	if err == nil {
+		fmt.Println(nodes[0])
+	}
+}
+```
+
 
 
 
