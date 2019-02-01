@@ -1,7 +1,7 @@
 # Unified Rendezvous Hash (hrw)
 
 This is implementation of [rendezvous hashing](https://en.wikipedia.org/wiki/Rendezvous_hashing)
-inspired by [github.com/im-kulikov/hrw](https://github.com/im-kulikov/hrw).
+inspired by [github.com/nspcc-dev/hrw](https://github.com/nspcc-dev/hrw).
 
 ## Description
 Rendezvous hashing allows to choose object from set of objects in synchronous way. This can be useful
